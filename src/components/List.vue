@@ -4,6 +4,7 @@
       class="item"
       v-for="item in list"
       :key="item.locationName"
+      @click="clickHandler(item)"
     >
       <div class="header">
         <span class="city">{{item.locationName}}</span>
@@ -56,6 +57,9 @@ export default {
     rainHandler (item) {
       const percent = item.weatherElement[1].time[0].parameter.parameterName
       return `降雨機率：${percent}%`
+    },
+    clickHandler (item) {
+      this.$emit('citySelect', item.locationName)
     }
   }
 }

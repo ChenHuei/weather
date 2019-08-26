@@ -5,24 +5,33 @@
       :city.sync="city"
       :citys="citys"
       @toggle="searchCapital"/>
-    <List :list="list"/>
+    <List
+      :list="list"
+      @citySelect="selectCity"/>
+    <City
+      v-if="singleCity"
+      :singleCity="singleCity"
+      @close="closeCity"/>
   </div>
 </template>
 
 <script>
 import Topbar from '@/components/Topbar'
 import List from '@/components/List'
+import City from '@/components/City'
 import { API, SIX_CAPITAL } from '@/constants'
 export default {
   name: 'Home',
   components: {
     Topbar,
-    List
+    List,
+    City
   },
   data () {
     return {
       isSixCapital: false,
       city: '',
+      singleCity: '',
       oriList: [],
       API,
       SIX_CAPITAL
@@ -47,6 +56,12 @@ export default {
   methods: {
     searchCapital () {
       this.isSixCapital = true
+    },
+    selectCity (city) {
+      this.singleCity = this.list.find(item => item.locationName === city)
+    },
+    closeCity () {
+      this.singleCity = ''
     }
   },
   mounted () {
@@ -54,6 +69,7 @@ export default {
       .then(res => res.json())
       .then(res => {
         this.oriList = res.records.location
+        console.log(this.oriList)
       })
   }
 }
