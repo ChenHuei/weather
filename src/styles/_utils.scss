@@ -3,14 +3,10 @@
 $font-family: 'Montserrat', sans-serif;
 
 $colors: (
-  red: #FF0000,
   grey: #767676,
-  grey_dark: #F9F9F9,
-  grey_light: #2D3338,
+  grey_light: #C3C3C3,
   white: #FFFFFF,
   black: #202124,
-  black_dark: #000,
-  black_light: #333
 );
 
 @function color($color-item) {
@@ -40,7 +36,7 @@ $colors: (
 }
 
 @mixin bgi {
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
