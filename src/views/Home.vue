@@ -69,7 +69,6 @@ export default {
       .then(res => res.json())
       .then(res => {
         this.oriList = res.records.location
-        console.log(this.oriList)
       })
   }
 }
