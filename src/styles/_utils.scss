@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900');
+
+$font-family: 'Montserrat', sans-serif;
+
+$colors: (
+  red: #FF0000,
+  grey: #767676,
+  grey_dark: #F9F9F9,
+  grey_light: #2D3338,
+  white: #FFFFFF,
+  black: #202124,
+  black_dark: #000,
+  black_light: #333
+);
+
+@function color($color-item) {
+  @return map-get($colors, $color-item)
+};
+
+@mixin size($w, $h:$w) {
+  width: $w;
+  height: $h;
+};
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+@mixin backgroundImage($url) {
+  background-image: url($url);
+  @include bgi;
+}
+
+@mixin bgi {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@mixin border($color, $size: .1rem) {
+  border: $size solid color($color);
+}
